@@ -1,16 +1,9 @@
-// buildscript {
-//     dependencies {
-//         classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
-//     }
-// }
-
 plugins {
 	id 'org.springframework.boot' version '2.1.5.RELEASE'
 	id 'java'
 }
 
 apply plugin: 'io.spring.dependency-management'
-// apply plugin: 'com.palantir.docker'
 
 group = 'com.tropicalbastos.imggallery'
 sourceCompatibility = '1.8'
@@ -21,18 +14,11 @@ repositories {
 
 dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile "org.flywaydb:flyway-core:5.2.4"
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile("com.h2database:h2")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
-
-// task unpack(type: Copy) {
-//     dependsOn bootJar
-//     from(zipTree(tasks.bootJar.outputs.files.singleFile))
-//     into("build/dependency")
-// }
-
-// docker {
-//     name "${project.group}/${bootJar.baseName}"
-//     copySpec.from(tasks.unpack.outputs).into("dependency")
-//     buildArgs(['DEPENDENCY': "dependency"])
-// }
 
