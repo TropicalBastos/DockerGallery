@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  web:
+    container_name: web
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    volumes:
+      - './web:/app'
+    ports:
+      - '3001:3000'
+    environment:
+      - NODE_ENV=development
+
+  imgservice:
+    container_name: imgservice
+    build:
+      context: ./imgservice
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
