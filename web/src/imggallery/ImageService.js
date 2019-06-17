@@ -1,17 +1,19 @@
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import ImageGallery from './ImageGallery';
 
 export default class ImageService extends Component {
 
-    constructor() {
+    static ENDPOINT = "http://imgservice:8080/images";
+
+    constructor(props) {
+        super(props);
         this.state = {
             images: []
         };
     }
 
     async componentWillMount() {
-        axios.get().then(result => {
+        axios.get(ImageService.ENDPOINT).then(result => {
             this.setState({
                 images: result
             });
