@@ -1,9 +1,12 @@
-FROM openjdk:8-jdk-alpine
+FROM anapsix/alpine-java
 
 ARG LIB=build/libs
 
 WORKDIR /app
 
 COPY ${LIB}/imggallery.jar .
+COPY wait-for-it.sh .
 
-ENTRYPOINT ["java","-jar","imggallery.jar"]
+RUN chmod +x wait-for-it.sh
+
+ENTRYPOINT ["./wait-for-it.sh", "db:3306", "--", "java", "-jar", "imggallery.jar"]
