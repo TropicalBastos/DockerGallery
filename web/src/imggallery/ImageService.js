@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default class ImageService extends Component {
 
-    static ENDPOINT = "http://imgservice:8080/images";
+    static ENDPOINT = "/images";
 
     constructor(props) {
         super(props);
@@ -15,7 +15,7 @@ export default class ImageService extends Component {
     async componentWillMount() {
         axios.get(ImageService.ENDPOINT).then(result => {
             this.setState({
-                images: result
+                images: result.data
             });
         });
     }
