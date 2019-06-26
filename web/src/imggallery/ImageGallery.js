@@ -7,11 +7,19 @@ export default class ImageGallery extends Component {
         this.state = {
             currentIndex: 0,
         };
+        this.nextImage = this.nextImage.bind(this);
+        this.prevImage = this.prevImage.bind(this);
     }
 
     nextImage() {
-        let { currentIndex, imageCount } = this.state;
-        if (currentIndex < imageCount) {
+        let { currentIndex } = this.state;
+        let { images } = this.props;
+
+        if (!images)
+            return;
+
+        let imageCount = images.length;
+        if (currentIndex < imageCount - 1) {
             this.setState({
                 currentIndex: currentIndex + 1
             });
@@ -19,7 +27,7 @@ export default class ImageGallery extends Component {
     }
 
     prevImage() {
-        let { currentIndex, imageCount } = this.state;
+        let { currentIndex } = this.state;
         if (currentIndex > 0) {
             this.setState({
                 currentIndex: currentIndex - 1
@@ -35,10 +43,14 @@ export default class ImageGallery extends Component {
             currentImage = images[currentIndex];
 
         return (
-            <div>
-                <div className="prev-img"></div>
+            <div class="gallery-wrapper">
+                <div onClick={this.prevImage} className="prev-img controls">
+                    <img src="/res/back.png" />
+                </div>
                 <img className="gallery-img" src={(currentImage) ? currentImage.path : ""} />
-                <div className="next-img"></div>
+                <div onClick={this.nextImage} className="next-img controls">
+                    <img src="/res/next.png" />
+                </div>
             </div>
         );
     }

@@ -1,6 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import ImageService from './imggallery/ImageService';
 import ImageGallery from './imggallery/ImageGallery';
 
