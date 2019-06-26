@@ -28,6 +28,7 @@ The steps required to build the web app are:
 - Cd into the repository and cd into imgservice: `cd imgservice`
 - Run `gradle build` to build the backend and run the data migrations
 - Cd into the web directory `cd ../web`
+- Cd back into the root directory `cd ..`
 - Run `npm run-script build` to transpile and build the frontend 
 - Run `docker-compose build` to build the containers
 - Run `docker-compose up` to finally run the cluster
