@@ -25,7 +25,7 @@ Make sure you have the following installed:
 The steps required to build the web app are:
 
 - Clone the repository
-- Cd into the directory and cd into imgservice: `cd imgservice`
+- Cd into the repository and cd into imgservice: `cd imgservice`
 - Run `gradle build` to build the backend and run the data migrations
 - Cd into the web directory `cd ../web`
 - Run `npm run-script build` to transpile and build the frontend 
